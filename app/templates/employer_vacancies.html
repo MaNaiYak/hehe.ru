@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h2>Employer: {{ employer.company }}</h2>
+    HR FIO: {{ employer.FIO }}<br>
+    email: {{ employer.email }}<br>
+    phone: {{ employer.phone }}<br>
+    <h3>Employer Vacancies:</h3>
+    <table class="table table-hover">
+    {% for vacancy in vacancies  %}
+        {% include '_vacancy.html' %}
+    {% endfor %}
+    </table>
+{% endblock %}

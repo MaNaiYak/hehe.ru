@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h2>Vacancy</h2>
+    <table class="table table-hover">
+        <tr>
+            <td>
+                description: {{ vacancy.description }}<br>
+                salary: {{ vacancy.salary }}<br>
+            </td>
+            <td>
+                employer FIO: {{ vacancy.employer.FIO }}<br>
+                employer company: {{ vacancy.employer.company }} <br>
+                position: {{ vacancy.position.name }} <br>
+                city: {{vacancy.city.name }}
+            </td>
+            {% if is_employer == False %}
+            <td>
+                {% if is_response == False %}
+                    <a href="{{ url_for('to_response', vacancy_id=vacancy.id) }}"><button type="button" class="btn btn-outline-primary me-2">Откликнуться</button></a>
+                {% else %}
+                    <h6>Вы уже откликнулись на данную вакансию</h6>
+                {% endif %}
+            </td>
+            {% endif %}
+        </tr>
+        {% if responses %}
+        {% for response in responses %}
+        <tr>
+            <td>
+                <h3>Отклик</h3>
+                response date: {{ response.response_date }}<br>
+                <a href="{{ url_for('candidate_profile', candidate_id=response.candidate.id) }}">candidate FIO: {{ response.candidate.FIO }}</a> <br>
+                candidate phone: {{ response.candidate.phone }}<br>
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </table>
+
+{% endblock %}
+
+

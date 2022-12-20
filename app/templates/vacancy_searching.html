@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h3>Vacancy Searching</h3>
+    {{ wtf.quick_form(form) }}
+    <table class="table table-hover">
+        {% if vacancies %}
+        {% for vacancy in vacancies  %}
+            {% include '_vacancy.html' %}
+        {% endfor %}
+        {% else %}
+        <h4>Вакансий с данными параметрами нет(</h4>
+        {% endif %}
+    </table>
+{% endblock %}

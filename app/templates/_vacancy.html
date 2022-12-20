@@ -1,0 +1,14 @@
+
+<tr>
+    <td>
+        <a href="{{ url_for('vacancy', vacancy_id=vacancy.id) }}">See vacancy</a><br>
+        description: {{ vacancy.description }}<br>
+        salary: {{ vacancy.salary }}<br>
+    </td>
+    <td>
+        employer FIO: {{ vacancy.employer.FIO }}<br>
+        employer company: {{ vacancy.employer.company }} <br>
+        position: {{ vacancy.position.name }} <br>
+        city: {{vacancy.city.name }}
+    </td>
+</tr>

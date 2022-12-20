@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h2>Candidate: {{ candidate.FIO }}</h2>
+    email: {{ candidate.email }}<br>
+    phone: {{ candidate.phone }}<br>
+    {% if resume %}
+    description: {{ resume.description }}<br>
+    salary: {{ resume.salary }}<br>
+    position: {{ resume.position.name }}<br>
+    city: {{ resume.city.name }} <br>
+    {% endif %}
+    {% if is_candidate ==True %}
+    <a href="{{ url_for('edit_resume') }}"><h5>Edit Resume</h5></a>
+    {% endif %}
+{% endblock %}
